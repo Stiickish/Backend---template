@@ -1,9 +1,15 @@
-1. Efter at have forket laves en ny pipe-line (så der ikke overskrides i templaten). 
-2. Sæt secrets på projektet i github for hhv. password og user. 
+1. Efter at have forket laves en ny pipe-line (så der ikke overskrides i templaten) HUSK at slette .git 
+2. Sæt secrets på projektet i github for hhv. password og user. (REMOTE_USER, REMOTE_PASS) skal stemme overens med tomcat manager!
 3. Lav database som reflekterer de nødvendige entiteter. 
 4. Importer entities vha. JPA-buddy --> husk at få alle relationer med. 
 5. Lav eventuelt et sql-script i resources, så der kommer noget dummy-data i din database.
-6. Følgende ting skal ændres i pom.xl: <artifactId> til navnet på din database. <name> til navnet på projektet. <remote.server> til navnet på din server. <db.name> til navnet på din database.  
+6. Følgende ting skal ændres i pom.xl:
+   * <artifactId> til navnet på din database. 
+   * <name> til navnet på projektet.
+   * <remote.server> til navnet på din server. 
+   * <db.name> til navnet på din database.
+7. Husk at ændre i persistence, linje 24 (Din egen database navn) View -> toolwindows -> persistence
+8. Husk at linke din DB og tjek for connection (Database sidefanen til højre)
 7. Lav facader som reflekterer de entiteter som skal benyttes. 
 8. Lav resourcer for de nødvendige endpoints --> husk at tilføje til application-config. 
 9. Lav integrationstests og unit-tests. 
