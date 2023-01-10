@@ -10,12 +10,15 @@ import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserFacadeTest {
 
     private static EntityManagerFactory emf;
     private static UserFacade userFacade;
+
+    User u1, u2;
 
     public UserFacadeTest() {
     }
@@ -30,8 +33,8 @@ public class UserFacadeTest {
     public void setup() {
         EntityManager em = emf.createEntityManager();
 
-        User u1 = new User("John", "123");
-        User u2 = new User("Bertha", "prop");
+        u1 = new User("John", "123");
+        u2 = new User("Bertha", "prop");
 
         try {
             em.getTransaction().begin();
@@ -48,7 +51,6 @@ public class UserFacadeTest {
     void verifyPassword() throws AuthenticationException {
         String passExpected = "123";
         User user = userFacade.getVeryfiedUser("John", "123");
-        System.out.println(user.getUserPass());
         String returnedPass = user.getUserPass();
         boolean decryptPass = BCrypt.checkpw(passExpected,returnedPass);
         assertTrue(decryptPass);
